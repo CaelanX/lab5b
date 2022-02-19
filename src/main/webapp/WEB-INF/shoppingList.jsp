@@ -16,7 +16,7 @@
         <input type="text" name="item" id="item">
         <button type="submit">Add</button>
         </form>
-        <form action="ShoppingList">
+        <form action="ShoppingList" method="post">
             <input type="hidden" name="action" value="delete">
             <c:forEach items="${items}" var="item">
              <p>
