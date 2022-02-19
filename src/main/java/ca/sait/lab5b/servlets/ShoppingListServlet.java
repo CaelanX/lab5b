@@ -69,15 +69,24 @@ public class ShoppingListServlet extends HttpServlet {
          if(action != null && action.equals("add")){
              String item = request.getParameter("item");
              
-             ArrayList<String> items = (ArrayList<String>)request.getAttribute("items");
+             ArrayList<String> items = (ArrayList<String>)session.getAttribute("items");
              
              items.add(item);
              
              session.setAttribute("items", items);
              
+         }else if(action != null && action.equals("delete")){
+             String item = request.getParameter("item");
              
+             ArrayList<String> items = (ArrayList<String>)session.getAttribute("items");
              
-         }else{
+             items.remove(item);
+             
+             session.setAttribute("items", items);
+             
+         }
+         
+         else{
         String name = request.getParameter("name");
         
         

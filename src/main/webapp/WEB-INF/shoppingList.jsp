@@ -11,19 +11,21 @@
         <p>Hello, ${name}. <a href="">logout</a></p>
         <h2>List</h2>
         <form action="ShoppingList" method="post">
+            <input type="hidden" name="action" value="add">
         <label for="item">Add item:</label>
         <input type="text" name="item" id="item">
         <button type="submit">Add</button>
         </form>
-        <form action="action">
-            <input type="hidden" name="action" value="add">
+        <form action="ShoppingList">
+            <input type="hidden" name="action" value="delete">
             <c:forEach items="${items}" var="item">
              <p>
                 <input type="radio" name="item" value="${item}">
                 <c:out value="${item}"></c:out>
             </p>
-            <button type="submit">Delete</button>    
-            </c:forEach>       
+            
+            </c:forEach> 
+            <button type="submit">Delete</button>
         </form>
     </body>
 </html>
