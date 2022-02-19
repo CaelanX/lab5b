@@ -13,10 +13,21 @@
     </head>
     <body>
         <h1>Shopping List</h1>
-        <p>Hello, adam. <a href="">logout</a></p>
+        <p>Hello, ${name}. <a href="">logout</a></p>
         <h2>List</h2>
+        <form>
         <label for="addItem">Add item:</label>
         <input type="text" name="addItem" id="addItem">
         <button type="submit">Add</button>
+        </form>
+        <form action="action">
+        
+            <p>
+                <input type="radio" name="item" value="apples">
+                apples
+            </p>
+            <button type="submit">Delete</button>
+            
+        </form>
     </body>
 </html>
