@@ -1,9 +1,4 @@
-<%-- 
-    Document   : shoppingList
-    Created on : Feb. 18, 2022, 2:45:18 p.m.
-    Author     : caelan
---%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%> 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -15,19 +10,20 @@
         <h1>Shopping List</h1>
         <p>Hello, ${name}. <a href="">logout</a></p>
         <h2>List</h2>
-        <form>
-        <label for="addItem">Add item:</label>
-        <input type="text" name="addItem" id="addItem">
+        <form action="ShoppingList" method="post">
+        <label for="item">Add item:</label>
+        <input type="text" name="item" id="item">
         <button type="submit">Add</button>
         </form>
         <form action="action">
-        
-            <p>
-                <input type="radio" name="item" value="apples">
-                apples
+            <input type="hidden" name="action" value="add">
+            <c:forEach items="${items}" var="item">
+             <p>
+                <input type="radio" name="item" value="${item}">
+                <c:out value="${item}"></c:out>
             </p>
-            <button type="submit">Delete</button>
-            
+            <button type="submit">Delete</button>    
+            </c:forEach>       
         </form>
     </body>
 </html>

@@ -6,6 +6,7 @@ package ca.sait.lab5b.servlets;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -60,13 +61,35 @@ public class ShoppingListServlet extends HttpServlet {
             throws ServletException, IOException {
         //getServletContext().getRequestDispatcher("/WEB-INF/register.jsp");
         
-        String name = request.getParameter("name");
-        
         HttpSession session = request.getSession();
         
-        session.setAttribute("name", name);
+        
+        String action = request.getParameter("action");
+        
+         if(action != null && action.equals("add")){
+             String item = request.getParameter("item");
              
-        getServletContext().getRequestDispatcher("/WEB-INF/shoppingList.jsp").forward(request, response);
+             ArrayList<String> items = (ArrayList<String>)request.getAttribute("items");
+             
+             items.add(item);
+             
+             session.setAttribute("items", items);
+             
+             
+             
+         }else{
+        String name = request.getParameter("name");
+        
+        
+        
+        ArrayList<String> items = new ArrayList();
+        session.setAttribute("name", name);
+        session.setAttribute("items",items);
+             
+        
+         }
+         getServletContext().getRequestDispatcher("/WEB-INF/shoppingList.jsp").forward(request, response);
     }
+}
 
   
